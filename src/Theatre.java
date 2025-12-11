@@ -53,6 +53,7 @@ public class Theatre {
         int attemptsLeft = 0;
         while (show.getListOfActors().size() < targetSize && attemptsLeft < 5) {
             show.addActor(findRandomActor(random, actors));
+            attemptsLeft++;
         }
     }
 
