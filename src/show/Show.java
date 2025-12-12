@@ -6,11 +6,10 @@ import person.Director;
 import java.util.ArrayList;
 
 public class Show {
-    private String title;
-    private double duration;
-    private Director director;
-    private ArrayList<Actor> listOfActors;
-    private ShowType showType = ShowType.CLASSIC_SHOW;
+    protected String title;
+    protected double duration;
+    protected Director director;
+    protected ArrayList<Actor> listOfActors;
 
     public Show(String title, double duration, Director director, ArrayList<Actor> listOfActors) {
         this.title = title;
@@ -24,11 +23,11 @@ public class Show {
     }
 
     public ShowType getShowType() {
-        return showType;
+        return ShowType.CLASSIC_SHOW;
     }
 
     public void printListOfActors() {
-        System.out.println("Список актеров представления типа " + returnShowTypeName(getShowType()) + ":");
+        System.out.println("Список актеров представления типа " + getShowType().getDisplayName() + ":");
         for(Actor actor : listOfActors) {
             System.out.println(actor.getFirstName() + " " + actor.getLastName() + " (" + actor.getHeight()+ "см.)");
         }
@@ -36,14 +35,14 @@ public class Show {
     }
 
     public void printDirectorInfo() {
-        System.out.println("Информация про режиссера представления типа " + returnShowTypeName(getShowType()) + ":");
+        System.out.println("Информация про режиссера представления типа " + getShowType().getDisplayName() + ":");
         System.out.println(director.toString());
         System.out.println();
     }
 
     public void addActor(Actor actor) {
         if (listOfActors.contains(actor)) {
-            System.out.println("В представлении типа " + returnShowTypeName(getShowType())+ " актер " + actor.getLastName() + " уже есть в списке!");
+            System.out.println("В представлении типа " + getShowType().getDisplayName() + " актер " + actor.getLastName() + " уже есть в списке!");
             System.out.println();
         } else {
             listOfActors.add(actor);
@@ -55,24 +54,13 @@ public class Show {
             if (actor.getLastName().equals(oldActorSurname)) {
                 listOfActors.remove(actor);
                 addActor(newActor);
-                System.out.println("В представлении типа " + returnShowTypeName(getShowType()) + " актёр " + oldActorSurname + " заменён на актёра " + newActor.getLastName());
+                System.out.println("В представлении типа " + getShowType().getDisplayName() + " актёр " + oldActorSurname + " заменён на актёра " + newActor.getLastName());
                 System.out.println();
                 return;
             }
         }
 
-        System.out.println("В представлении типа " + returnShowTypeName(getShowType())+ " актера " + oldActorSurname + " нет в списке!");
+        System.out.println("В представлении типа " + getShowType().getDisplayName() + " актера " + oldActorSurname + " нет в списке!");
         System.out.println();
-    }
-
-    protected String returnShowTypeName(ShowType showType) {
-        switch (showType) {
-            case ShowType.BALLET:
-                return "балет";
-            case ShowType.OPERA:
-                return "опера";
-            default:
-                return "обычный спектакль";
-        }
     }
 }

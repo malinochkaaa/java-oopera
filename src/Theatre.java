@@ -1,4 +1,7 @@
-import person.*;
+import person.Actor;
+import person.Director;
+import person.Gender;
+import person.Person;
 import show.Ballet;
 import show.Opera;
 import show.Show;

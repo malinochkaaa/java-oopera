@@ -24,7 +24,7 @@ public class MusicalShow extends Show {
     }
 
     public void printLibrettoText() {
-        System.out.println("Текст либретто представления типа " + returnShowTypeName(getShowType()) + ":");
+        System.out.println("Текст либретто представления типа " + getShowType().getDisplayName() + ":");
         System.out.println(librettoText);
         System.out.println();
     }

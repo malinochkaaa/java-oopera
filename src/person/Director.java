@@ -10,7 +10,7 @@ public class Director extends Person {
 
     @Override
     public String toString() {
-        return "person.person.Director{" +
+        return "Director{" +
                 "firstName='" + getFirstName() + '\'' +
                 ", lastName='" + getLastName() + '\'' +
                 ", gender=" + getGender() +

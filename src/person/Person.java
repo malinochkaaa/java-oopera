@@ -1,9 +1,11 @@
 package person;
 
+import java.util.Objects;
+
 public class Person {
-    private String firstName;
-    private String lastName;
-    private Gender gender;
+    protected String firstName;
+    protected String lastName;
+    protected Gender gender;
 
     public Person(String name, String surname, Gender gender) {
         this.firstName = name;
@@ -21,5 +23,17 @@ public class Person {
 
     public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && gender == person.gender;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, gender);
     }
 }
